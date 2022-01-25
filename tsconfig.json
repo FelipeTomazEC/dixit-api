@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "allowJs": true,
+    "outDir": "build",
+    "rootDir": "./",
+    "removeComments": true,
+    "noEmit": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@entities/*": ["src/entities/*"],
+      "@common/*": ["src/common/*"],
+      "@test/*": ["test/*"],
+      "@utils/*": ["src/utils/*"],
+      "@use-cases/*": ["src/use-cases/*"],
+      "@interface-adapters/*": ["src/interface-adapters/*"],
+      "@infra/*": ["src/infra/*"]
+    },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
