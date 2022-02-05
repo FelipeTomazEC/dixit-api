@@ -7,17 +7,15 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "lint": "tsc && eslint \"src/**\" \"test/**\" --fix && prettier -w src test",
     "build": "babel ./src --out-dir build --extensions \".ts\"",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.ts": [
-      "tsc",
       "eslint --fix",
-      "prettier -w",
-      "git add"
+      "prettier -w"
     ]
   },
   "dependencies": {
