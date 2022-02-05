@@ -14,8 +14,10 @@
   },
   "lint-staged": {
     "*.ts": [
+      "tsc",
       "eslint --fix",
-      "prettier -w"
+      "prettier -w",
+      "git add"
     ]
   },
   "dependencies": {
