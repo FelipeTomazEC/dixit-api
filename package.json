@@ -2,7 +2,7 @@
   "name": "dixit-api",
   "version": "1.0.0",
   "description": "Backend for the dixit game",
-  "main": "index.js",
+  "main": "build/server.js",
   "author": "FelipeTomazEC",
   "license": "MIT",
   "private": false,
@@ -10,7 +10,9 @@
     "test": "jest --verbose",
     "lint": "tsc && eslint \"src/**\" \"test/**\" --fix && prettier -w src test",
     "build": "babel ./src --out-dir build --extensions \".ts\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "node -r dotenv/config build/server.js",
+    "dev": "nodemon --watch 'src/' --exec 'ts-node -r dotenv/config -r tsconfig-paths/register src/server.ts' -e ts"
   },
   "lint-staged": {
     "*.ts": [
@@ -20,6 +22,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2"
   },
   "devDependencies": {
@@ -44,8 +47,10 @@
     "husky": "^7.0.0",
     "jest": "^27.4.7",
     "lint-staged": "^12.3.1",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",
+    "ts-node": "^10.5.0",
     "tsconfig-paths-jest": "^0.0.1",
     "typescript": "^4.5.5"
   }
