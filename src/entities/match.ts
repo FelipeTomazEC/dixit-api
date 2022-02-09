@@ -1,6 +1,6 @@
 import { Player } from './player';
 
-export class Room {
+export class Match {
   private readonly players: Player[];
 
   constructor(readonly code: string) {
