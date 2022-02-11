@@ -3,7 +3,7 @@ import { UseCaseInputPort } from '@use-cases/ports/usecase-input-port';
 import { UseCaseOutputPort } from '@use-cases/ports/usecase-output-port';
 import { CreateMatchResponse } from './response';
 import { MatchCodeGenerator } from './match-code-generator.interface';
-import { MatchRepository } from './match-repository.interface';
+import { MatchRepository } from '@use-cases/common-dependencies/match-repository.interface';
 
 interface Dependencies {
   codeGenerator: MatchCodeGenerator;
