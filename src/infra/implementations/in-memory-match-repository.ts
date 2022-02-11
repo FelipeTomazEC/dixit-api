@@ -1,5 +1,5 @@
 import { Match } from '@entities/match';
-import { MatchRepository } from '@use-cases/create-match/match-manager.interface';
+import { MatchRepository } from '@use-cases/create-match/match-repository.interface';
 
 export class InMemoryMatchRepository implements MatchRepository {
   private static instance: InMemoryMatchRepository | null = null;
