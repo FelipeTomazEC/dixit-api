@@ -20,7 +20,7 @@ export const runBaseControllerTests = <T>(makeSut: MakeSUT<T>) => {
   const sut = makeSut({ useCase, presenter, logger });
 
   it('should send internal errors to the presenter and the logger.', async () => {
-    const request = new HttpRequest({ method: 'GET' });
+    const request = new HttpRequest();
     const error = new Error('Some weird error');
     jest.spyOn(useCase, 'execute').mockRejectedValueOnce(error);
     await sut.handle(request);

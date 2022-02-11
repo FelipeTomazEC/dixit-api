@@ -1,9 +1,4 @@
-import {
-  RequestBody,
-  HeaderCollection,
-  ParamCollection,
-  HttpMethod,
-} from './types';
+import { RequestBody, HeaderCollection, ParamCollection } from './types';
 
 interface Props {
   body: RequestBody;
@@ -17,16 +12,13 @@ export class HttpRequest {
 
   private readonly headers: HeaderCollection;
 
-  public readonly method: HttpMethod;
-
   private readonly params: ParamCollection;
 
   private readonly query: ParamCollection;
 
-  constructor(props: Partial<Props> & { method: HttpMethod }) {
+  constructor(props: Partial<Props> = {}) {
     this.body = props.body ?? {};
     this.headers = props.headers ?? [];
-    this.method = props.method;
     this.params = props.params ?? [];
     this.query = props.query ?? [];
   }

@@ -1,5 +1,5 @@
 import { Match } from '@entities/match';
 
-export interface MatchManager {
-  signMatch(match: Match): Promise<void>;
+export interface MatchRepository {
+  store(match: Match): Promise<void>;
 }

@@ -3,7 +3,6 @@ import { HttpRequest } from '@interface-adapters/http/http-request';
 import { getMock } from '@test/test-helpers/get-mock';
 import { UseCaseOutputPort } from '@use-cases/ports/usecase-output-port';
 import { runBaseControllerTests } from './base-controller-tests';
-import faker from 'faker';
 import { CreateMatchController } from '@interface-adapters/controllers/create-match';
 import { CreateMatchUseCase } from '@use-cases/create-match';
 
@@ -15,17 +14,9 @@ describe('Create match http controller tests', () => {
 
   runBaseControllerTests((deps) => new CreateMatchController(deps));
 
-  it('should pass the username and the avatar to the use case', () => {
-    const creatorAvatar = faker.internet.avatar();
-    const creatorUsername = faker.internet.userName();
-
-    const request = new HttpRequest({
-      method: 'POST',
-      body: { creatorAvatar, creatorUsername },
-    });
-
+  it('should call the use case', () => {
+    const request = new HttpRequest();
     sut.handle(request);
-
-    expect(useCase.execute).toBeCalledWith({ creatorAvatar, creatorUsername });
+    expect(useCase.execute).toBeCalled();
   });
 });
