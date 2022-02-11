@@ -1,7 +1,6 @@
 import { HttpRequest } from '@interface-adapters/http/http-request';
 import {
   HeaderCollection,
-  HttpMethod,
   ParamCollection,
 } from '@interface-adapters/http/types';
 import { Request } from 'express';
@@ -23,7 +22,6 @@ export const parseHttpRequest = (request: Request) => {
   );
 
   return new HttpRequest({
-    method: request.method as HttpMethod,
     body: request.body,
     headers,
     params,
