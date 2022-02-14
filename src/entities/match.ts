@@ -10,4 +10,8 @@ export class Match {
   join(player: Player): void {
     this.players.push(player);
   }
+
+  getPlayers(): Player[] {
+    return [...this.players];
+  }
 }
