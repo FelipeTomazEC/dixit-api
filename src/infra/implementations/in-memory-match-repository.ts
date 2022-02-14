@@ -21,4 +21,13 @@ export class InMemoryMatchRepository implements MatchRepository {
   async store(match: Match): Promise<void> {
     this.matches.push(match);
   }
+
+  async load(id: string): Promise<Match | undefined> {
+    return this.matches.find((m) => m.code === id);
+  }
+
+  async update(match: Match): Promise<void> {
+    const matchIndex = this.matches.findIndex((m) => m.code === match.code);
+    this.matches.splice(matchIndex, 1, match);
+  }
 }
