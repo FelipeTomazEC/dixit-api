@@ -30,7 +30,6 @@ describe('Express request parser tests', () => {
     };
 
     const request = new HttpRequest({
-      method: 'PUT',
       body: {
         string: 'string',
         number: 2,
