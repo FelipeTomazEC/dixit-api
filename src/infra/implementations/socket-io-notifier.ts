@@ -1,7 +1,7 @@
 import { Match } from '@entities/match';
 import { Player } from '@entities/player';
+import { Server as HttpServer } from 'http';
 import { Notifier } from '@use-cases/common-dependencies/notifier.interface';
-import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 
 export class SocketIONotifier implements Notifier {
@@ -11,8 +11,7 @@ export class SocketIONotifier implements Notifier {
 
   private readonly playerSocketsMap: Map<string, Socket>;
 
-  private constructor() {
-    const server = createServer();
+  private constructor(server: HttpServer) {
     this.io = new Server(server, {
       cors: {
         origin: process.env.FRONT_END_ORIGIN,
@@ -26,19 +25,26 @@ export class SocketIONotifier implements Notifier {
         this.playerSocketsMap.set(username, socket);
       });
     });
-
-    const WS_PORT = process.env.WS_PORT ?? 5000;
-    server.listen(WS_PORT, () =>
-      console.log(`Socket listening on port ${WS_PORT}.`),
-    );
   }
 
   static getInstance(): SocketIONotifier {
     if (!this.instance) {
-      this.instance = new SocketIONotifier();
+      throw new Error(
+        'Notifier not initialized. Call the init method on the application start up.',
+      );
     }
 
     return this.instance;
+  }
+
+  static init(server: HttpServer): void {
+    if (!!this.instance) {
+      throw new Error(
+        'this method must be called only once and it must be on the application start up.',
+      );
+    }
+
+    this.instance = new SocketIONotifier(server);
   }
 
   private getSocket(player: Player): Socket {
